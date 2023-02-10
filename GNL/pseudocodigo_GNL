@@ -1,0 +1,25 @@
+Comportamiento de Función "Get_next_line".
+---------------------------------------------------------------------------------------------------------------------
+
+Coje un fd (file descriptor) y va leyendo y imprimiendo por consola linea a linea el texto que contiene.
+
+Las reglas que sigue son las siguientes:
+- Cuando se encuentra un salto de linea en el texto empieza a imprimir la siguente linea.
+- Si en algun momento de la ejecucion ocurre slgun fallo la funcion devolvera NULL.
+- Si se llega al final del 'fd' porque no hay nada mas que leer devolvera NULL.
+
+Tenemos que hacer una funcion para leer la linea hasta que encuentre un caracter delimitador que en este caso
+sera un salto de linea '\n', otra seguramente para reservar memoria en malloc del espacio de cada linea, necesitarimos
+una funcion para imprimir las lineas una a una.
+
+Hay que tener cuidado con el buffer size, ya que nos pueden dar una linea demasiado larga en un buffer muy pequeño.
+
+Nos pondremos a investigar dos nuevas funciones, "read" y "open", que nos ayudaran a agilizar el trabajo del proyecto.
+
+Cabe esperarse un monton de leaks que habrá que ir corrigienno poco a poco.
+
+En el documento de las utils iremos metiendo funciones que nos sean utiles para el desarrollo de nuestro GNL que
+muchas seran parecidas a algunas ya realizadas en el proyecto de la libft.
+
+Usaremos el strjoin de la liibft por si la linea es mas larga que el buffer que nos han pasado, asi concateremos la
+primera linea hasta el buffer con el resto de la linea que quede hasta el salto de linea.
