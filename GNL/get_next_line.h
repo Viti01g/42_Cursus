@@ -13,7 +13,11 @@
 #ifndef GNL_H
 # define GNL_H
 
-# define BUFFER_SIZE
+# ifndef BUFFER_SIZE
+
+# define BUFFER_SIZE 42
+
+# endif
 
 # include<unistd.h>
 # include<stdlib.h>
