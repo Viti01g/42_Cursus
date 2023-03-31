@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/26 19:26:34 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/02/06 16:02:13 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:33:25 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,6 +52,21 @@ static void	ft_free(char **r, int a)
 		free (r[a]);
 	free (r);
 }
+/*
+static int letras(char *s)
+{
+	int	i;
+
+	i = 0;
+	while (s[i])
+	{
+		if (s[i] >= '0' && s[i] <= '9')
+			i++;
+		else
+			return (0);
+	}
+	return (1);
+}*/
 
 char	**ft_split(char const *s, char c)
 {
@@ -81,6 +96,7 @@ char	**ft_split(char const *s, char c)
 	str[i] = 0;
 	return (str);
 }
+
 /*
 static size_t	ContStrings(char const *s, char delim)
 {
@@ -185,18 +201,17 @@ int	main()
 	char	**result;
 
 	i = 0;
-	strin = "Hola que haces";
+	strin = "54 96x";
 	result = ft_split(strin, ' ');
 	
 	while (result[i])
 	{
-		printf("%s", result[i]);
+		printf("%s\n", result[i]);
 		i++;
 	}
 	
 	return (0);
 }
-
 
 static int	count_words(const char *str, char c)
 {

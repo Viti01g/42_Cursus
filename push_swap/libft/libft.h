@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:56:35 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/03/13 15:50:49 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/03/27 18:47:07 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ void	*ft_memcpy(void *dest, const void *src, size_t num);
 void	*ft_memchr(const void *s, int c, size_t n);
 int		ft_memcmp(const void *s1, const void *s2, size_t num);
 void	*ft_memmove(void *dest, const void *src, size_t num);
+void	ft_rev_int_tab(int *tab, int size);
 char	*ft_strnstr(const char *haystack, const char *needle, size_t len);
 size_t	ft_strlcpy(char *dest, const char *src, size_t destsize);
 size_t	ft_strlcat(char *dest, const char *src, size_t destsize);

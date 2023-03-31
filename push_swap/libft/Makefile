@@ -6,7 +6,7 @@
 #    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 12:36:00 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/03/13 15:51:55 by vruiz-go         ###   ########.fr        #
+#    Updated: 2023/03/27 18:46:30 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -28,6 +28,7 @@ MY_SOURCES = ft_isalpha.c \
 						ft_memcpy.c \
 						ft_memcmp.c \
 						ft_memmove.c \
+						ft_rev_in_tab.c \
 						ft_strnstr.c \
 						ft_strlcpy.c \
 						ft_strlcat.c \
