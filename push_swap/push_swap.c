@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:42:02 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/03/31 13:57:01 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/04/05 21:32:37 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,11 +66,12 @@ int dobles(stack_a *lista)
 		while (temp2 < temp1)
 		{
 			if(temp1->data1 == temp2->data1)
-				return(0);
-			temp2->next;
+				return (0);
+			temp2 =temp2->next;
 		}
-		i++;
+		temp1 = temp1->next;
 	}
+	return (1);
 }
 
 int main(int argc, char **argv)
@@ -94,6 +95,8 @@ int main(int argc, char **argv)
 		fillnums(argv[j], lista);
 		j++;
 	}
+	if (dobles(lista) == 0)
+		return (0);
 	lista = lista->next;
 	while (lista != NULL)
 	{
