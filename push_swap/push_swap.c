@@ -3,25 +3,25 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
+/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:42:02 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/04/05 21:32:37 by VR               ###   ########.fr       */
+/*   Updated: 2023/04/18 17:30:46 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-stack_a *lista_push_swp(stack_a *lista)
+stack *lista_push_swp(stack *lista)
 {
-	lista = ft_calloc(1, sizeof(stack_a));
+	lista = ft_calloc(1, sizeof(stack));
 	return (lista);
 }
 
-static stack_a *añadir_nums(stack_a *lista, char *num)
+static stack *añadir_nums(stack *lista, char *num)
 {
-	stack_a *nuevo_num, *aux;
-	nuevo_num = (stack_a*)ft_calloc(1, sizeof(stack_a));
+	stack *nuevo_num, *aux;
+	nuevo_num = (stack*)ft_calloc(1, sizeof(stack));
 	nuevo_num->data1 = ft_atoi((const char *)num);//num -48;
 	nuevo_num->next = NULL;
 	if (!lista)
@@ -36,7 +36,7 @@ static stack_a *añadir_nums(stack_a *lista, char *num)
 	return (lista);
 }
 
-void	fillnums(char *arg, stack_a *lista)
+void	fillnums(char *arg, stack *lista)
 {
 	int		i;
 	char	**nums;
@@ -46,22 +46,21 @@ void	fillnums(char *arg, stack_a *lista)
 	while (nums[i])
 	{
 		lista = añadir_nums(lista, nums[i]);
-		//printf("%d\n",lista->data1);
 		lista = lista->next;
 		i++;
 	}
 }
 
-int dobles(stack_a *lista)
+int dobles(stack *lista_a)
 {	
-	stack_a	*temp1;
-	stack_a	*temp2;
+	stack	*temp1;
+	stack	*temp2;
 
-	temp1 = lista;
+	temp1 = lista_a;
 	temp1 = temp1->next->next;
 	while (temp1)
 	{
-		temp2 = lista;
+		temp2 = lista_a;
 		temp2 = temp2->next;
 		while (temp2 < temp1)
 		{
@@ -78,10 +77,16 @@ int main(int argc, char **argv)
 {
 	int	i;
 	int	j;
-	char **words;
+	stack	*aux;
+	stack	*aux2;
+	stack	*lista_a = NULL;
+	stack	*lista_b = NULL;
+	
 	
 	j = 1;
-	stack_a *lista = lista_push_swp(lista);
+	lista_a = lista_push_swp(lista_a);
+	lista_b = lista_push_swp(lista_b);
+	lista_b = lista_b->next;
 	while (j < argc)
 	{
 		i = 0;
@@ -92,16 +97,31 @@ int main(int argc, char **argv)
 			else
 				return (0);
 		}
-		fillnums(argv[j], lista);
+		fillnums(argv[j], lista_a);
 		j++;
 	}
-	if (dobles(lista) == 0)
+	if (dobles(lista_a) == 0)
 		return (0);
-	lista = lista->next;
-	while (lista != NULL)
+	lista_a = lista_a->next;
+	stack *temp = lista_a;
+	while (temp != NULL)
 	{
-		printf("%d\n",lista->data1);
-		lista = lista->next;
+		printf("%d\n",temp->data1);
+		temp = temp->next;
+	}
+	write(1, "\n", 1);
+	push_b(&lista_a, &lista_b);
+	push_b(&lista_a, &lista_b);
+	push_b(&lista_a, &lista_b);	
+	swap_rra(&lista_a);
+	aux = lista_a;
+	aux2 = lista_b;
+	//write(1, "c\n", 2);
+	while (aux)
+	{
+		printf("a -> %d		b -> %d\n", aux->data1, aux2->data1);
+		aux = aux->next;
+		aux2 = aux2->next;
 	}
 	write(1, "culo\n", 5);
 	return (0);

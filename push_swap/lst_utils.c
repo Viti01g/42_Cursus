@@ -1,21 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   lst_utils.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 17:39:28 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/04/17 13:13:40 by vruiz-go         ###   ########.fr       */
+/*   Created: 2023/04/17 16:25:47 by vruiz-go          #+#    #+#             */
+/*   Updated: 2023/04/18 15:30:37 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+int	ft_listsize(stack *lst)
 {
 	int		cont;
-	t_list	*aux;
+	stack	*aux;
 
 	aux = lst;
 	cont = 0;
@@ -27,4 +27,37 @@ int	ft_lstsize(t_list *lst)
 		cont++;
 	}
 	return (cont);
+}
+
+stack	*ft_listlast(stack *lst)
+{
+	stack	*temp;
+
+	temp = lst;
+	while (temp != NULL)
+	{
+		if (temp->next == NULL)
+			break ;
+		temp = temp->next;
+	}
+	return (temp);
+}
+
+stack	*ft_listindex(stack *lst, int index)
+{
+	stack	*aux;
+	int		i;
+
+	if (index > ft_listsize(lst))
+	{
+		return (ft_listlast(lst));
+	}
+	i = 1;
+	aux = lst;
+	while (i < index)
+	{
+		aux = aux->next;
+		i++;
+	}
+	return (aux);
 }

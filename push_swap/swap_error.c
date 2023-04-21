@@ -1,30 +1,33 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstsize_bonus.c                                 :+:      :+:    :+:   */
+/*   swap_error.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/02/02 17:39:28 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/04/17 13:13:40 by vruiz-go         ###   ########.fr       */
+/*   Created: 2023/04/17 12:55:10 by vruiz-go          #+#    #+#             */
+/*   Updated: 2023/04/19 13:12:13 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "push_swap.h"
 
-int	ft_lstsize(t_list *lst)
+void	ft_error_exit(void)
 {
-	int		cont;
+	write(1, "Error\n", 6);
+	exit(EXIT_SUCCESS);
+}
+
+void	ft_free(t_list *lst)
+{
 	t_list	*aux;
+	t_list	*aux2;
 
 	aux = lst;
-	cont = 0;
-	if (!lst)
-		return (0);
 	while (aux)
 	{
-		aux = aux->next;
-		cont++;
+		aux2 = aux->next;
+		free(aux);
+		aux = aux2;
 	}
-	return (cont);
 }
