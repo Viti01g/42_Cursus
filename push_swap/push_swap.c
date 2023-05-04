@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:42:02 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/04/18 17:30:46 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/04 19:37:08 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,7 +82,6 @@ int main(int argc, char **argv)
 	stack	*lista_a = NULL;
 	stack	*lista_b = NULL;
 	
-	
 	j = 1;
 	lista_a = lista_push_swp(lista_a);
 	lista_b = lista_push_swp(lista_b);
@@ -110,19 +109,18 @@ int main(int argc, char **argv)
 		temp = temp->next;
 	}
 	write(1, "\n", 1);
-	push_b(&lista_a, &lista_b);
+/* 	push_b(&lista_a, &lista_b);
 	push_b(&lista_a, &lista_b);
 	push_b(&lista_a, &lista_b);	
-	swap_rra(&lista_a);
+	swap_rra(&lista_a); */
 	aux = lista_a;
 	aux2 = lista_b;
+	alg_100(lista_a, lista_b);
 	//write(1, "c\n", 2);
-	while (aux)
-	{
-		printf("a -> %d		b -> %d\n", aux->data1, aux2->data1);
-		aux = aux->next;
-		aux2 = aux2->next;
-	}
+	/* swap_rra(&lista_a);
+	printf("\nLISTA A:\n");
+	read_list(lista_a); */
+	
 	write(1, "culo\n", 5);
 	return (0);
 }
