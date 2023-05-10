@@ -6,26 +6,12 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 14:56:29 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/04/28 17:22:27 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/08 16:24:17 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-/*
-void	moves(stack *lista)
-{
-	stack *aux1;
-	stack *aux2;
-	stack *temp;
-	aux1 = (*lista);
-	aux2 = (*lista)->next;
-	printf("%d\n%d\n", aux1->data1, aux2->data1);
-	if (lista->data1 > lista->next->data1)
-	{
-	}
-	printf("%d\n", lista->data1);
-}
- */
+
 void	swap_a(stack *lista)
 {
 	long	temp;

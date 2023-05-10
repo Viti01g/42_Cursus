@@ -5,106 +5,92 @@
 /*                                                    +:+ +:+         +:+     */
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/04/19 13:13:51 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/04 19:55:15 by vruiz-go         ###   ########.fr       */
+/*   Created: 2023/05/09 16:12:42 by vruiz-go          #+#    #+#             */
+/*   Updated: 2023/05/09 17:46:49 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	alg_tres(stack *lista)
+void	alg_tres(stack **lista)
 {
 	int		a;
 	int		b;
 	int		c;
-	stack	*aux;
+	stack	**aux;
 
 	aux = lista;
-	a = aux->data1;
-	b = aux->next->data1;
-	c = aux->next->next->data1;
+	a = (*aux)->data1;
+	b = (*aux)->next->data1;
+	c = (*aux)->next->next->data1;
 	if (b < a && a < c)
-		swap_a(lista);
+		swap_a(*lista);
 	if (c < b && b < a)
 	{
-		swap_a(lista);
-		swap_rra(&lista);
+		swap_a(*lista);
+		swap_rra(lista);
 	}
 	if (b < c && c < a)
-		swap_ra(&lista);
+		swap_ra(lista);
 	if (b > c && c > a)
 	{
-		swap_a(lista);
-		swap_ra(&lista);
+		swap_a(*lista);
+		swap_ra(lista);
 	}
 	if (b > a && a > c)
-		swap_rra(&lista);
+		swap_rra(lista);
 }
-void	alg_ten(stack *lista_a, stack *lista_b)
-{
-	int		min;
 
-	while (ft_listsize(lista_a) > 2)
+void	alg_four(stack **stack_a, stack **stack_b)
+{
+	int min;
+
+	min = get_min(*stack_a);
+	while ((*stack_a)->data1 != min)
 	{
-		min = get_min(lista_a);
-		if (check_middle(lista_a) == 1)
-		{
-			while (lista_a->data1 != min)
-				swap_ra(&lista_a);
-		}
-		else if (check_middle(lista_a) == 2)
-		{
-			while (lista_a->data1 != min)
-				swap_rra(&lista_a);
-		}
-		push_b(&lista_a, &lista_b);
+		if (check_middle(*stack_a) == 1)
+			swap_ra(stack_a);
+		else
+			swap_rra(stack_a);
 	}
-	if (lista_a->data1 < lista_a->next->data1)
-		swap_a(lista_a);
-	while (lista_b != NULL)
-		push_a(&lista_b, &lista_a);
+	push_b(stack_a, stack_b);
+	alg_tres(stack_a);
+	push_a(stack_b, stack_a);
 }
-void	alg_100(stack *lista_a, stack *lista_b)
-{
-	int nbr;
-	int	cont;
-	//int	max;
 
-	nbr = 20;
-	cont = 0;
-	while (ft_listsize(lista_a) > 2 && nbr <= 100)
+void	alg_five(stack **stack_a, stack **stack_b)
+{
+	int	min;
+
+	min = get_min(*stack_a);
+	while ((*stack_a)->data1 != min)
 	{
-		while (cont < nbr)
-		{
-			if (lista_a->data1 <= nbr)
-			{
-				push_b(&lista_a, &lista_b);
-				cont++;
-			}
-			else
-				swap_rra(&lista_a);		
-		}
-		nbr += 20;
+		if (check_middle(*stack_a) == 1)
+			swap_ra(stack_a);
+		else
+			swap_rra(stack_a);
 	}
-		read_list(lista_b);
-		printf("Numeros en b: %d\n", ft_listsize(lista_b));
-		printf("el maximo de la lista b es: %d\n", get_max(lista_b));
-	while (lista_b != NULL)
+	push_b(stack_a, stack_b);
+	alg_four(stack_a, stack_b);
+	push_a(stack_a, stack_b);
+}
+
+void	algs_cortos(stack **stack_a, stack **stack_b)
+{
+	int	size;
+
+	size = ft_listsize(*stack_a);
+	if (ft_listsize(*stack_a) == 0 || ft_listsize(*stack_a) == 1)
+		return ;
+	if (size == 2)
+		swap_a(*stack_a);
+	else if (size == 3)
+		alg_tres(stack_a);
+	else if (size == 4)
 	{
-		lista_b = pinturillo(lista_b, lista_a);
+
+		alg_four(stack_a, stack_b);
 	}
-		printf("Lista a\n");
-		read_list(lista_a);
-/* 	max = get_max(lista_b);
-	if (check_middle(lista_b) == 1)
-	{
-		while (lista_b->data1 != max)
-			swap_ra(&lista_b);
-	}
-	else if (check_middle(lista_b) == 2)
-	{
-		while (lista_b->data1 != max)
-			swap_rra(&lista_b);
-	}
-		push_a(&lista_b, &lista_a);*/
+	else if (size == 5)
+		alg_five(stack_a, stack_b);
 }

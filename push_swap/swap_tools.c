@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:41:26 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/04 19:51:21 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/09 16:49:58 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,11 +41,9 @@ int	get_max(stack *lista)
 		//read_list(lista);
 		if (aux->data1 > max)
 			max = aux->data1;
-		printf("%d\n", aux->data1);
 		i++;
 		aux = aux->next;
 	}
-	printf("num max: %d\n", max);
 	if (i == 20)
 		exit(0);
 	return (max);
@@ -86,21 +84,19 @@ void	read_list(stack *lst)
 	}
 }
 
-stack	*pinturillo(stack *lista_b, stack *lista_a)
+int	get_distance(stack **stacks, int index)
 {
-	int	max;
+	stack	*head;
+	int		distance;
 
-	max = get_max(lista_b);
-	if (check_middle(lista_b) == 1)
+	distance = 0;
+	head = *stacks;
+	while (head)
 	{
-		while (lista_b->data1 != max)
-			swap_ra(&lista_b);
+		if (head->data1 == index)
+			break ;
+		distance++;
+		head = head->next;
 	}
-	else if (check_middle(lista_b) == 2)
-	{
-		while (lista_b->data1 != max)
-			swap_rra(&lista_b);
-	}
-	push_a(&lista_b, &lista_a);
-	return (lista_b);
+	return (distance);
 }

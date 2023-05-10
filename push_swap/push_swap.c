@@ -6,17 +6,11 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:42:02 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/04 19:37:08 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/10 13:29:02 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
-
-stack *lista_push_swp(stack *lista)
-{
-	lista = ft_calloc(1, sizeof(stack));
-	return (lista);
-}
 
 static stack *añadir_nums(stack *lista, char *num)
 {
@@ -72,56 +66,41 @@ int dobles(stack *lista_a)
 	}
 	return (1);
 }
+/* void leaks()
+{
+	system("leaks -q push_swap");
+} */
 
 int main(int argc, char **argv)
 {
-	int	i;
 	int	j;
-	stack	*aux;
-	stack	*aux2;
-	stack	*lista_a = NULL;
-	stack	*lista_b = NULL;
+	stack	*lista_a;
+	stack	*lista_b;
 	
+	//atexit(leaks);
 	j = 1;
-	lista_a = lista_push_swp(lista_a);
-	lista_b = lista_push_swp(lista_b);
-	lista_b = lista_b->next;
+	ft_check_args(argc, argv);
+	lista_a = NULL;
+	lista_b = NULL;
+	lista_a = (stack *)malloc(sizeof(stack));
+	lista_b = (stack *)malloc(sizeof(stack));
+	//write(1, "culo\n", 5);
 	while (j < argc)
 	{
-		i = 0;
-		 while (argv[j][i])
-		{
-			if ((argv[j][i] >= '0' && argv[j][i] <= '9') || argv[j][i] == ' ')
-				i++;
-			else
-				return (0);
-		}
 		fillnums(argv[j], lista_a);
 		j++;
 	}
-	if (dobles(lista_a) == 0)
-		return (0);
-	lista_a = lista_a->next;
-	stack *temp = lista_a;
-	while (temp != NULL)
+	//read_list(lista_a);
+	/* if (is_sorted(&lista_a))
 	{
-		printf("%d\n",temp->data1);
-		temp = temp->next;
-	}
-	write(1, "\n", 1);
-/* 	push_b(&lista_a, &lista_b);
-	push_b(&lista_a, &lista_b);
-	push_b(&lista_a, &lista_b);	
-	swap_rra(&lista_a); */
-	aux = lista_a;
-	aux2 = lista_b;
-	alg_100(lista_a, lista_b);
-	//write(1, "c\n", 2);
-	/* swap_rra(&lista_a);
-	printf("\nLISTA A:\n");
-	read_list(lista_a); */
-	
-	write(1, "culo\n", 5);
+		ft_free(lista_a);
+		ft_free(lista_b);
+		return (0);
+	} */
+	check_algor(lista_a->next, lista_b->next);
+	read_list(lista_a);
+	printf("lista b\n");
+	read_list(lista_b);
 	return (0);
 }
 
