@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:56:35 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/03/27 18:47:07 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:20:57 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include<unistd.h>
 # include<stdlib.h>
+# include<stdio.h>
 
 int		ft_isalpha(int i);
 int		ft_isdigit(int c);
