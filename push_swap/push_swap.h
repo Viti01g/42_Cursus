@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:55:22 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/09 17:22:08 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/10 16:59:27 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,8 @@ void	check_algor(stack *lista_a, stack *lista_b);
 void	radix_sort(stack **stack_a, stack **stack_b);
 int		is_sorted(stack **stacks);
 void	ft_liberar(char **str);
+int		ft_atoi_ps(char *str);
+int		ft_is_nbr_space_valid(char *str);
 void	alg_tres(stack **stack_a);
 void	alg_four(stack **stack_a, stack **stack_b);
 void	alg_five(stack **stack_a, stack **stack_b);

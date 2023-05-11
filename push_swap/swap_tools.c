@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:41:26 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/09 16:49:58 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/11 16:27:05 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -74,9 +74,7 @@ int	check_middle(stack *lista)
 
 void	read_list(stack *lst)
 {
-	stack	*aux;
-
-	aux = lst;
+	stack	*aux = lst;
 	while (aux)
 	{
 		printf("Node content: %d\n", aux->data1);

@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:43:37 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/09 13:29:32 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/10 19:54:17 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ static int	ft_contains(int num, char **argv, int i)
 		if (ft_atoi(argv[i]) == num)
 			return (1);
 		i++;
+/* 		if (ft_atoi(argv[i]) == '\0')
+			return (1); */
 	}
 	return (0);
 }
@@ -47,8 +49,9 @@ void	ft_check_args(int argc, char **argv)
 	char	**args;	
 
 	i = 0;
-	if (argc == 2)
-		args = ft_split(argv[1], ' ');
+	if (argc >= 2){
+		printf("oijfg\n");
+		args = ft_split(argv[1], ' ');}
 	else
 	{
 		i = 1;
@@ -56,7 +59,7 @@ void	ft_check_args(int argc, char **argv)
 	}
 	while (args[i])
 	{
-		tmp = ft_atoi(args[i]);
+		tmp = ft_atoi_ps(args[i]);
 		if (!ft_isnum(args[i]))
 			ft_error_exit();
 		if (ft_contains(tmp, args, i))
@@ -68,15 +71,3 @@ void	ft_check_args(int argc, char **argv)
 	if (argc == 2)
 		ft_liberar(args);
 }
-/* void	check_alg(int argc, stack *lista_a, stack *lista_b)
-{
-	if (argc == 2)
-	{
-		if (lista_a->data1 < lista_a->next->data1)
-			swap_a(lista_a);
-	}
-	if (argc == 3)
-		alg_tres(lista_a);
-	if (argc > 3 && argc <= 10)
-		alg_ten(lista_a, lista_b);
-} */

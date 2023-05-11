@@ -6,7 +6,7 @@
 #    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 15:42:18 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/05/09 16:13:05 by vruiz-go         ###   ########.fr        #
+#    Updated: 2023/05/10 16:56:18 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,8 @@ SRCS		= push_swap.c \
 						alg_radi.c \
 						swap_tools.c \
 						check_arg.c \
-						check_alg.c
+						check_alg.c \
+						swap_tools_2.c
 
 OBJS = $(SRCS:.c=.o)
 

@@ -6,41 +6,49 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:42:02 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/10 13:29:02 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/11 17:42:58 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static stack *añadir_nums(stack *lista, char *num)
+static void	añadir_nums(stack **lista, char *num)
 {
 	stack *nuevo_num, *aux;
-	nuevo_num = (stack*)ft_calloc(1, sizeof(stack));
-	nuevo_num->data1 = ft_atoi((const char *)num);//num -48;
+	nuevo_num = (stack *)malloc(sizeof(stack));
+	nuevo_num->data1 = ft_atoi_ps(num);//num -48;
 	nuevo_num->next = NULL;
-	if (!lista)
-		lista = nuevo_num;
+	printf("nuevo_num: %d\n", nuevo_num->data1);
+	printf("la lista: %p\n", lista);
+	if (!(*lista))
+		*lista = nuevo_num;
 	else
 	{
-		aux = lista;
+		aux = (*lista);
 		while (aux->next != NULL)
 			aux = aux->next;
 		aux->next = nuevo_num;
 	}
-	return (lista);
+	printf("Añadido\n");
 }
 
-void	fillnums(char *arg, stack *lista)
+void	fillnums(char *arg, stack **lista)
 {
 	int		i;
 	char	**nums;
+	stack	*aux;
 
+	aux = *lista;
 	nums = ft_split(arg, 32);
 	i = 0;
 	while (nums[i])
 	{
-		lista = añadir_nums(lista, nums[i]);
-		lista = lista->next;
+		//printf("kn\n");
+		printf("num en i: %s\n", nums[i]);
+		añadir_nums(lista, nums[i]);
+		//printf("NODe content t: %d\n", aux->data1);
+		//read_list(lista);
+		//aux = aux->next;
 		i++;
 	}
 }
@@ -74,33 +82,21 @@ int dobles(stack *lista_a)
 int main(int argc, char **argv)
 {
 	int	j;
-	stack	*lista_a;
-	stack	*lista_b;
+	stack	**lista_a;
+	stack	**lista_b;
 	
 	//atexit(leaks);
 	j = 1;
 	ft_check_args(argc, argv);
-	lista_a = NULL;
-	lista_b = NULL;
-	lista_a = (stack *)malloc(sizeof(stack));
-	lista_b = (stack *)malloc(sizeof(stack));
-	//write(1, "culo\n", 5);
+	lista_a = malloc(sizeof(stack*));
+	lista_b = malloc(sizeof(stack*));
 	while (j < argc)
 	{
 		fillnums(argv[j], lista_a);
+		printf("%p\n", *lista_a);
 		j++;
 	}
-	//read_list(lista_a);
-	/* if (is_sorted(&lista_a))
-	{
-		ft_free(lista_a);
-		ft_free(lista_b);
-		return (0);
-	} */
-	check_algor(lista_a->next, lista_b->next);
-	read_list(lista_a);
-	printf("lista b\n");
-	read_list(lista_b);
+	check_algor(*lista_a, *lista_b);
 	return (0);
 }
 
@@ -140,3 +136,11 @@ while (i < j)
 		quick_sort(f, j - 1);
 		quick_sort(j + 1, l);
 } */
+/* 
+*list
+*temp = list
+*list->next
+---------------------
+|NULL|NULL|	|	|	|
+---------------------
+1-> NULL */
