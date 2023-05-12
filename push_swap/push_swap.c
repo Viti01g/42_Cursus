@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:42:02 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/11 17:42:58 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/12 19:04:26 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,10 +16,10 @@ static void	añadir_nums(stack **lista, char *num)
 {
 	stack *nuevo_num, *aux;
 	nuevo_num = (stack *)malloc(sizeof(stack));
+	if (!nuevo_num)
+		ft_error_exit();
 	nuevo_num->data1 = ft_atoi_ps(num);//num -48;
 	nuevo_num->next = NULL;
-	printf("nuevo_num: %d\n", nuevo_num->data1);
-	printf("la lista: %p\n", lista);
 	if (!(*lista))
 		*lista = nuevo_num;
 	else
@@ -29,7 +29,7 @@ static void	añadir_nums(stack **lista, char *num)
 			aux = aux->next;
 		aux->next = nuevo_num;
 	}
-	printf("Añadido\n");
+	//free(nuevo_num);
 }
 
 void	fillnums(char *arg, stack **lista)
@@ -43,12 +43,7 @@ void	fillnums(char *arg, stack **lista)
 	i = 0;
 	while (nums[i])
 	{
-		//printf("kn\n");
-		printf("num en i: %s\n", nums[i]);
 		añadir_nums(lista, nums[i]);
-		//printf("NODe content t: %d\n", aux->data1);
-		//read_list(lista);
-		//aux = aux->next;
 		i++;
 	}
 }
@@ -74,10 +69,10 @@ int dobles(stack *lista_a)
 	}
 	return (1);
 }
-/* void leaks()
+void leaks()
 {
 	system("leaks -q push_swap");
-} */
+}
 
 int main(int argc, char **argv)
 {
@@ -85,19 +80,28 @@ int main(int argc, char **argv)
 	stack	**lista_a;
 	stack	**lista_b;
 	
-	//atexit(leaks);
+	atexit(leaks);
 	j = 1;
+	if (argc <= 2)
+		exit(EXIT_SUCCESS);
 	ft_check_args(argc, argv);
 	lista_a = malloc(sizeof(stack*));
+	if (!lista_a)
+		ft_error_exit();
 	lista_b = malloc(sizeof(stack*));
+	if (!lista_b)
+		ft_error_exit();
 	while (j < argc)
 	{
+		if (ft_strlen(argv[j]) < 1)
+			ft_error_exit();
 		fillnums(argv[j], lista_a);
-		printf("%p\n", *lista_a);
 		j++;
 	}
 	check_algor(*lista_a, *lista_b);
-	return (0);
+	free_stack(lista_a);
+	free_stack(lista_b);
+	exit(0);
 }
 
 /*

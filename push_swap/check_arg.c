@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:43:37 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/10 19:54:17 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:09:56 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,8 +20,7 @@ static int	ft_contains(int num, char **argv, int i)
 		if (ft_atoi(argv[i]) == num)
 			return (1);
 		i++;
-/* 		if (ft_atoi(argv[i]) == '\0')
-			return (1); */
+
 	}
 	return (0);
 }
@@ -49,9 +48,8 @@ void	ft_check_args(int argc, char **argv)
 	char	**args;	
 
 	i = 0;
-	if (argc >= 2){
-		printf("oijfg\n");
-		args = ft_split(argv[1], ' ');}
+	if (argc >= 2)
+		args = ft_split(argv[1], ' ');
 	else
 	{
 		i = 1;

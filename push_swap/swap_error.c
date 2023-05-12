@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:55:10 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/09 13:29:02 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:54:16 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,8 @@
 
 void	ft_error_exit(void)
 {
-	write(1, "Error\n", 6);
-	exit(EXIT_SUCCESS);
+	write(1, "Error1\n", 7);
+	exit(EXIT_FAILURE);
 }
 
 void	ft_free(stack *lst)

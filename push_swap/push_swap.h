@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:55:22 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/10 16:59:27 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/12 18:37:11 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,7 @@ void	pinturillo(stack **lista_b, stack **lista_a);
 int 	dobles(stack *lista_a);
 void	ft_error_exit(void);
 void	ft_free(stack *lst);
+void	free_stack(stack **stacks);
 int		ft_listsize(stack *lst);
 stack	*ft_listlast(stack *lst);
 stack	*ft_listindex(stack *lst, int index);
