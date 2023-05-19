@@ -6,15 +6,15 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:22:44 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/04/18 13:27:16 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:31:22 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_ra(stack **lista)
+void	swap_ra(t_stack **lista)
 {
-	stack	*aux;
+	t_stack	*aux;
 
 	if (ft_listsize(*lista) > 1)
 	{
@@ -26,24 +26,24 @@ void	swap_ra(stack **lista)
 	}
 }
 
-void	swap_rb(stack **lista)
+void	swap_rb(t_stack **lista)
 {
-	stack *aux;
+	t_stack	*aux;
 
 	if (ft_listsize(*lista) > 1)
 	{
 		aux = (*lista)->next;
 		ft_listlast(*lista)->next = *lista;
-		(*lista)->next= NULL;
+		(*lista)->next = NULL;
 		*lista = aux;
 		write(1, "rb\n", 3);
 	}
 }
 
-void	swap_rr(stack **lista_a, stack **lista_b)
+void	swap_rr(t_stack **lista_a, t_stack **lista_b)
 {
-	stack	*aux1;
-	stack	*aux2;
+	t_stack	*aux1;
+	t_stack	*aux2;
 
 	if (ft_listsize(*lista_a) > 1)
 	{

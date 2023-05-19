@@ -6,16 +6,16 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 16:25:47 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/04/18 15:30:37 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:32:23 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	ft_listsize(stack *lst)
+int	ft_listsize(t_stack *lst)
 {
 	int		cont;
-	stack	*aux;
+	t_stack	*aux;
 
 	aux = lst;
 	cont = 0;
@@ -29,9 +29,9 @@ int	ft_listsize(stack *lst)
 	return (cont);
 }
 
-stack	*ft_listlast(stack *lst)
+t_stack	*ft_listlast(t_stack *lst)
 {
-	stack	*temp;
+	t_stack	*temp;
 
 	temp = lst;
 	while (temp != NULL)
@@ -43,9 +43,9 @@ stack	*ft_listlast(stack *lst)
 	return (temp);
 }
 
-stack	*ft_listindex(stack *lst, int index)
+t_stack	*ft_listindex(t_stack *lst, int index)
 {
-	stack	*aux;
+	t_stack	*aux;
 	int		i;
 
 	if (index > ft_listsize(lst))

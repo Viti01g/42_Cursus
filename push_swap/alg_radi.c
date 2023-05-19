@@ -6,15 +6,15 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:13:51 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/10 13:45:56 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:32:26 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static int	get_max_bits(stack **stacks)
+static int	get_max_bits(t_stack **stacks)
 {
-	stack	*head;
+	t_stack	*head;
 	int		max;
 	int		max_bits;
 
@@ -32,9 +32,9 @@ static int	get_max_bits(stack **stacks)
 	return (max_bits);
 }
 
-void	radix_sort(stack **stack_a, stack **stack_b)
+void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 {
-	stack	*head_a;
+	t_stack	*head_a;
 	int		i;
 	int		j;
 	int		size;

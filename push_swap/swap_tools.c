@@ -6,15 +6,15 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 16:41:26 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/11 16:27:05 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:35:24 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-int	get_min(stack *lista)
+int	get_min(t_stack *lista)
 {
-	stack	*aux;
+	t_stack	*aux;
 	int		min;
 
 	aux = lista;
@@ -28,17 +28,17 @@ int	get_min(stack *lista)
 	return (min);
 }
 
-int	get_max(stack *lista)
+int	get_max(t_stack *lista)
 {
-	stack	*aux;
-	int		max;
-	static int i = 0;
+	t_stack		*aux;
+	int			max;
+	static int	i;
 
+	i = 0;
 	aux = lista;
 	max = aux->data1;
 	while (aux != NULL)
 	{
-		//read_list(lista);
 		if (aux->data1 > max)
 			max = aux->data1;
 		i++;
@@ -49,9 +49,9 @@ int	get_max(stack *lista)
 	return (max);
 }
 
-int	check_middle(stack *lista)
+int	check_middle(t_stack *lista)
 {
-	stack	*aux;
+	t_stack	*aux;
 	int		min;
 	int		cont;
 
@@ -72,19 +72,21 @@ int	check_middle(stack *lista)
 	return (0);
 }
 
-void	read_list(stack *lst)
+/* void	read_list(t_stack *lst)
 {
-	stack	*aux = lst;
+	t_stack	*aux;
+	aux = lst;
+	
 	while (aux)
 	{
 		printf("Node content: %d\n", aux->data1);
 		aux = aux->next;
 	}
-}
+} */
 
-int	get_distance(stack **stacks, int index)
+int	get_distance(t_stack **stacks, int index)
 {
-	stack	*head;
+	t_stack	*head;
 	int		distance;
 
 	distance = 0;

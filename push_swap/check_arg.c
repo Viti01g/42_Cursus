@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/24 15:43:37 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/12 18:09:56 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:29:45 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,10 +17,9 @@ static int	ft_contains(int num, char **argv, int i)
 	i++;
 	while (argv[i])
 	{
-		if (ft_atoi(argv[i]) == num)
+		if (ft_atoi_ps(argv[i]) == num)
 			return (1);
 		i++;
-
 	}
 	return (0);
 }
@@ -41,20 +40,32 @@ static int	ft_isnum(char *num)
 	return (1);
 }
 
+static char	**ft_puebas(char **argv)
+{
+	int		i;
+	char	**args;
+
+	i = 1;
+	while (argv[i])
+	{
+		args = ft_split(argv[i], ' ');
+		if (argv[i + 1])
+			ft_liberar(args);
+		i++;
+	}
+	return (args);
+}
+
 void	ft_check_args(int argc, char **argv)
 {
 	int		i;
 	long	tmp;
 	char	**args;	
 
+	if (argc < 2)
+		exit(EXIT_FAILURE);
+	args = ft_puebas(argv);
 	i = 0;
-	if (argc >= 2)
-		args = ft_split(argv[1], ' ');
-	else
-	{
-		i = 1;
-		args = argv;
-	}
 	while (args[i])
 	{
 		tmp = ft_atoi_ps(args[i]);
@@ -66,6 +77,5 @@ void	ft_check_args(int argc, char **argv)
 			ft_error_exit();
 		i++;
 	}
-	if (argc == 2)
-		ft_liberar(args);
+	ft_liberar(args);
 }

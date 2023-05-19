@@ -6,101 +6,95 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:42:02 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/12 19:04:26 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/19 14:28:27 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-static void	añadir_nums(stack **lista, char *num)
+static void	anadir_nums(t_stack **lista, char *num)
 {
-	stack *nuevo_num, *aux;
-	nuevo_num = (stack *)malloc(sizeof(stack));
+	t_stack	*nuevo_num;
+	t_stack	*aux;
+
+	nuevo_num = (t_stack *)malloc(sizeof(t_stack));
 	if (!nuevo_num)
 		ft_error_exit();
-	nuevo_num->data1 = ft_atoi_ps(num);//num -48;
+	nuevo_num->data1 = ft_atoi_ps(num);
 	nuevo_num->next = NULL;
 	if (!(*lista))
 		*lista = nuevo_num;
 	else
 	{
 		aux = (*lista);
+		if (!aux)
+			return ;
 		while (aux->next != NULL)
 			aux = aux->next;
 		aux->next = nuevo_num;
 	}
-	//free(nuevo_num);
 }
 
-void	fillnums(char *arg, stack **lista)
+void	fillnums(char *arg, t_stack **lista)
 {
 	int		i;
 	char	**nums;
-	stack	*aux;
+	t_stack	*aux;
 
 	aux = *lista;
 	nums = ft_split(arg, 32);
 	i = 0;
 	while (nums[i])
 	{
-		añadir_nums(lista, nums[i]);
+		anadir_nums(lista, nums[i]);
 		i++;
 	}
-}
-
-int dobles(stack *lista_a)
-{	
-	stack	*temp1;
-	stack	*temp2;
-
-	temp1 = lista_a;
-	temp1 = temp1->next->next;
-	while (temp1)
+	ft_liberar(nums);
+	if (dobles(*lista) == 1)
 	{
-		temp2 = lista_a;
-		temp2 = temp2->next;
-		while (temp2 < temp1)
-		{
-			if(temp1->data1 == temp2->data1)
-				return (0);
-			temp2 =temp2->next;
-		}
-		temp1 = temp1->next;
+		free_stack(lista);
+		ft_error_exit();
 	}
-	return (1);
-}
-void leaks()
-{
-	system("leaks -q push_swap");
 }
 
-int main(int argc, char **argv)
+int	dobles(t_stack *lista_a)
 {
-	int	j;
-	stack	**lista_a;
-	stack	**lista_b;
-	
-	atexit(leaks);
+	t_stack	*tmp;
+
+	while (lista_a)
+	{
+		tmp = lista_a->next;
+		while (tmp)
+		{
+			if (lista_a->data1 == tmp->data1)
+				return (1);
+			tmp = tmp->next;
+		}
+		lista_a = lista_a->next;
+	}
+	return (0);
+}
+
+int	main(int argc, char **argv)
+{
+	int		j;
+	t_stack	*lista_a;
+	t_stack	*lista_b;
+
 	j = 1;
-	if (argc <= 2)
-		exit(EXIT_SUCCESS);
 	ft_check_args(argc, argv);
-	lista_a = malloc(sizeof(stack*));
-	if (!lista_a)
-		ft_error_exit();
-	lista_b = malloc(sizeof(stack*));
-	if (!lista_b)
-		ft_error_exit();
+	lista_a = NULL;
+	lista_b = NULL;
 	while (j < argc)
 	{
 		if (ft_strlen(argv[j]) < 1)
 			ft_error_exit();
-		fillnums(argv[j], lista_a);
+		fillnums(argv[j], &lista_a);
 		j++;
 	}
-	check_algor(*lista_a, *lista_b);
-	free_stack(lista_a);
-	free_stack(lista_b);
+	check_algor(&lista_a, &lista_b);
+	free_stack(&lista_a);
+	free_stack(&lista_b);
 	exit(0);
 }
 

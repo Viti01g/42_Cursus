@@ -6,47 +6,53 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/10 14:56:29 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/08 16:24:17 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/18 17:33:39 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "push_swap.h"
 
-void	swap_a(stack *lista)
+void	swap_a(t_stack **lista)
 {
 	long	temp;
-	temp = lista->data1;
-	lista->data1 = lista->next->data1;
-	lista->next->data1 = temp;
+
+	if (!*lista || !((*lista)->next))
+		return ;
+	temp = (*lista)->data1;
+	(*lista)->data1 = (*lista)->next->data1;
+	(*lista)->next->data1 = temp;
 	write(1, "sa\n", 3);
 }
 
-void	swap_b(stack *lista)
+void	swap_b(t_stack **lista)
 {
-	long	aux;
-	aux = lista->data1;
-	lista->data1 = lista->next->data1;
-	lista->next->data1 = aux;
+	long	temp;
+
+	if (!*lista || !((*lista)->next))
+		return ;
+	temp = (*lista)->data1;
+	(*lista)->data1 = (*lista)->next->data1;
+	(*lista)->next->data1 = temp;
 	write(1, "sb\n", 3);
 }
 
-void	swap_ab(stack *lista_a, stack *lista_b)
+void	swap_ab(t_stack **lista_a, t_stack **lista_b)
 {
 	long	aux;
 	long	aux2;
-	
-	aux = lista_a->data1;
-	lista_a->data1 = lista_a->next->data1;
-	lista_a->next->data1 = aux;
-	aux2 = lista_b->data1;
-	lista_b->data1 = lista_b->next->data1;
-	lista_b->next->data1 = aux2;
+
+	aux = (*lista_a)->data1;
+	(*lista_a)->data1 = (*lista_a)->next->data1;
+	(*lista_a)->next->data1 = aux;
+	aux2 = (*lista_b)->data1;
+	(*lista_b)->data1 = (*lista_b)->next->data1;
+	(*lista_b)->next->data1 = aux2;
 	write(1, "ss\n", 3);
 }
 
-void	push_b(stack **lst_a, stack **lst_b)
+void	push_b(t_stack **lst_a, t_stack **lst_b)
 {
-	stack	*aux;
+	t_stack	*aux;
 
 	if (*lst_a)
 	{
@@ -58,9 +64,9 @@ void	push_b(stack **lst_a, stack **lst_b)
 	}
 }
 
-void	push_a(stack **lst_b, stack **lst_a)
+void	push_a(t_stack **lst_b, t_stack **lst_a)
 {
-	stack	*aux;
+	t_stack	*aux;
 
 	if (*lst_b)
 	{
