@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:42:02 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/19 14:28:27 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/23 16:39:04 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,12 +75,35 @@ int	dobles(t_stack *lista_a)
 	return (0);
 }
 
+static void	is_ordered(t_stack *lista_a)
+{
+	t_stack	*aux;
+	int		min;
+
+	aux = lista_a;
+	min = aux->data1;
+	aux = aux->next;
+	while (aux != NULL)
+	{
+		if (aux->data1 > min)
+			min = aux->data1;
+		else
+			return ;
+		aux = aux->next;
+	}
+	exit(EXIT_SUCCESS);
+}
+void leaks()
+{
+	system("leaks -q push_swap");
+} 
+
 int	main(int argc, char **argv)
 {
 	int		j;
 	t_stack	*lista_a;
 	t_stack	*lista_b;
-
+	//atexit(leaks);
 	j = 1;
 	ft_check_args(argc, argv);
 	lista_a = NULL;
@@ -92,11 +115,14 @@ int	main(int argc, char **argv)
 		fillnums(argv[j], &lista_a);
 		j++;
 	}
+	index_stack(&lista_a);
+	is_ordered(lista_a);
 	check_algor(&lista_a, &lista_b);
 	free_stack(&lista_a);
 	free_stack(&lista_b);
 	exit(0);
 }
+
 
 /*
 

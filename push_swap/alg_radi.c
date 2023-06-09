@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/19 13:13:51 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/18 17:32:26 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:38:58 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,12 @@ static int	get_max_bits(t_stack **stacks)
 	int		max_bits;
 
 	head = *stacks;
-	max = head->data1;
+	max = head->index;
 	max_bits = 0;
 	while (head)
 	{
-		if (head->data1 > max)
-			max = head->data1;
+		if (head->index > max)
+			max = head->index;
 		head = head->next;
 	}
 	while ((max >> max_bits) != 0)
@@ -50,7 +50,7 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b)
 		while (j++ < size)
 		{
 			head_a = *stack_a;
-			if (((head_a->data1 >> i) & 1) == 1)
+			if (((head_a->index >> i) & 1) == 1)
 				swap_ra(stack_a);
 			else
 				push_b(stack_a, stack_b);

@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/03/13 15:55:22 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/18 17:40:04 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:52:26 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,7 +24,7 @@
 typedef struct picuchillo
 {
 	int					data1;
-	int					value;
+	int					index;
 	struct picuchillo	*next;
 }	t_stack;
 
@@ -45,6 +45,7 @@ void	radix_sort(t_stack **stack_a, t_stack **stack_b);
 void	ft_liberar(char **str);
 int		ft_atoi_ps(char *str);
 int		ft_is_nbr_space_valid(char *str);
+void	index_stack(t_stack **stack);
 void	alg_tres(t_stack **stack_a);
 void	alg_four(t_stack **stack_a, t_stack **stack_b);
 void	alg_five(t_stack **stack_a, t_stack **stack_b);

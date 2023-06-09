@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/04/17 12:55:10 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/19 14:26:25 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/22 13:36:51 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,7 +39,7 @@ int	is_sorted(t_stack **stacks)
 	head = *stacks;
 	while (head && head->next)
 	{
-		if (head->value > head->next->value)
+		if (head->data1 > head->next->data1)
 			return (0);
 		head = head->next;
 	}

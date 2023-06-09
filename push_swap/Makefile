@@ -6,7 +6,7 @@
 #    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/03/13 15:42:18 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/05/18 18:26:45 by vruiz-go         ###   ########.fr        #
+#    Updated: 2023/06/09 18:03:53 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -51,7 +51,6 @@ fclean: clean
 	@$(RM) $(NAME)
 	@$(MAKE) -C ./libft fclean --silent
 
-re: fclean $(NAME)
-	@$(MAKE) -C $(LIBFT_PATH) clean --silent
+re: fclean all
 
 .PHONY: all clean fclean re

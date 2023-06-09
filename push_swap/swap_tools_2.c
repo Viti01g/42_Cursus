@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/10 16:52:55 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/16 12:40:20 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/05/22 16:56:31 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,4 +59,23 @@ int	ft_is_nbr_space_valid(char *str)
 			return (0);
 	}
 	return (1);
+}
+
+void	index_stack(t_stack **stack)
+{
+	t_stack	*aux;
+	t_stack	*aux1;
+
+	aux = *stack;
+	while (aux)
+	{
+		aux1 = *stack;
+		while (aux1)
+		{
+			if (aux->data1 > aux1->data1)
+				aux->index += 1;
+			aux1 = aux1->next;
+		}
+		aux = aux->next;
+	}
 }
