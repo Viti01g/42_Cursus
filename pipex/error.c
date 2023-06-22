@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/05/31 17:20:18 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/06/08 14:39:26 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/06/19 13:06:18 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,10 +18,12 @@ int	msg(char *err)
 	return (1);
 }
 
-void	msg_error(char *err)
+void	msg_error(char *err, int outfile)
 {
 	perror(err);
-	exit (1);
+	if (outfile == 1)
+		exit (1);
+	return ;
 }
 
 void	parent_free(t_pipe *pipe)

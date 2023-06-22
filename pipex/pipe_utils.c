@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/01 15:58:52 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/06/08 14:39:41 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/06/21 14:19:12 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,12 @@ void	close_pipes(t_pipe *pipe)
 
 char	*get_path(char **envp)
 {
-	while (ft_strncmp("PATH", *envp, 4))
+	if (!*envp)
+	{
+		perror("PATH not found.");
+		exit(EXIT_FAILURE);
+	}
+	while (ft_strncmp("PATH=", *envp, 5))
 		envp++;
 	return (*envp + 5);
 }
@@ -62,7 +67,7 @@ void	pipe1(t_pipe pipe, char *argv[], char *envp[])
 	execve(pipe.command, pipe.command_args, envp);
 }
 
-void	pipe2(t_pipe pipe, char *argv[], char *envp[])
+void	pipe2(t_pipe pipe, char *argv[], char *envp[], int open)
 {
 	dup2(pipe.fd_tube[0], 0);
 	close(pipe.fd_tube[1]);
@@ -76,4 +81,9 @@ void	pipe2(t_pipe pipe, char *argv[], char *envp[])
 		exit(EXIT_FAILURE);
 	}
 	execve(pipe.command, pipe.command_args, envp);
+	if (open == 1)
+	{
+		child_free(&pipe);
+		exit(EXIT_FAILURE);
+	}
 }
