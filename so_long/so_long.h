@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   so_long.h                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:03:58 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/07/05 15:43:09 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:41:32 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,8 @@
 # include <sys/types.h>
 # include <sys/uio.h>
 # include <errno.h>
-# include <mlx.h>
+//# include <mlx.h>
+# include <./minilibx/mlx.h>
 
 # define DESTROY 17
 # define ERR_INPUT "Invalid number of arguments.\n"
@@ -36,6 +37,7 @@ typedef struct s_obj
 	int		n_cols;
 	int		n_rows;
 	int		n_objs;
+	int		n_exit;
 	int		n_floor;
 	int		n_plyr;
 }   t_obj;

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   leer_mapa.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
+/*   By: VR <VR@student.42.fr>                      +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/26 18:05:29 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/07/07 14:09:38 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/07/10 18:47:35 by VR               ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,37 @@ char	**check_params(int argc, char **argv, t_obj *obj)
 	return (check_map(fd, obj));
 }
 
+static void	check_items(t_obj *obj, char *mapa)
+{
+	int	i;
+
+	i = 0;
+	while (mapa[i])
+	{
+		if (mapa[i] == 'P')
+			obj->n_plyr++;
+		if (mapa[i] == 'E')
+			obj->n_exit++;
+		if (mapa[i] == 'C')
+			obj->n_objs++;
+		i++;
+	}
+	if (obj->n_exit == 1 && obj->n_plyr == 1 && obj->n_objs > 1)
+		return ;
+	msg_error("Invalid map.");
+}
+
 char	**check_map(int fd, t_obj *objs)
 {
 	char	*mapa_capon;
 	char	**mapa;
 
 	read_map(fd, &objs, &mapa_capon);
+	check_items(objs, mapa_capon);
+	mapa = ft_split(mapa_capon, '\n');
+	if (!mapa)
+		msg_error("Empty map.");
+	return (mapa);
 }
 
 void	read_map(int fd, t_obj *obj, char **str)
