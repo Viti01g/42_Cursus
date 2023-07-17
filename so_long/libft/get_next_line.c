@@ -6,11 +6,12 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:22:22 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/03/04 14:21:33 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/07/16 16:33:45 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line.h"
+#include "libft.h"
 
 static char	*read_line(int fd, char *backup)
 {
@@ -28,13 +29,13 @@ static char	*read_line(int fd, char *backup)
 			break ;
 		buf[leido] = '\0';
 		if (!backup)
-			backup = ft_strdup("");
+			backup = ft_strdup_gnl("");
 		if (!backup)
 			return (NULL);
 		aux = backup;
-		backup = ft_strjoin(aux, buf);
+		backup = ft_strjoini_gnl(aux, buf);
 		free(aux);
-		if (ft_strchr(buf, '\n'))
+		if (ft_strchr_gnl(buf, '\n'))
 			break ;
 	}
 	return (backup);
@@ -55,7 +56,7 @@ static char	*separador(char *lineaEntera)
 	}
 	while (lineaEntera[i] && lineaEntera[i] != '\n')
 		i++;
-	aux = ft_substr(lineaEntera, 0, i + 1);
+	aux = ft_substr_gnl(lineaEntera, 0, i + 1);
 	return (aux);
 }
 
@@ -74,7 +75,7 @@ void	sobrante(char **lineaEntera)
 	}
 	while ((*lineaEntera)[i] && (*lineaEntera)[i] != '\n')
 		i++;
-	aux = ft_substr(*lineaEntera, i + 1, ft_strlen(*lineaEntera) - i);
+	aux = ft_substr_gnl(*lineaEntera, i + 1, ft_strlen_(*lineaEntera) - i);
 	free(*lineaEntera);
 	*lineaEntera = aux;
 }

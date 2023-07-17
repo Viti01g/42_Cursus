@@ -6,13 +6,13 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:22:40 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/03/04 14:21:25 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/07/16 16:34:33 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "get_next_line_bonus.h"
 
-size_t	ft_strlen(const char *str)
+size_t	ft_strlen_(const char *str)
 {
 	int	i;
 
@@ -22,7 +22,7 @@ size_t	ft_strlen(const char *str)
 	return (i);
 }
 
-char	*ft_strchr(const char *str, int c)
+char	*ft_strchr_gnl(const char *str, int c)
 {
 	int	i;
 
@@ -38,14 +38,14 @@ char	*ft_strchr(const char *str, int c)
 	return (NULL);
 }
 
-char	*ft_strdup(const char *s)
+char	*ft_strdup_gnl(const char *s)
 {
 	int		i;
 	int		j;
 	char	*str;
 
 	i = 0;
-	j = ft_strlen(s);
+	j = ft_strlen_(s);
 	str = (char *)malloc(sizeof(*str) * (j + 1));
 	if (!str)
 		return (NULL);
@@ -58,7 +58,7 @@ char	*ft_strdup(const char *s)
 	return (str);
 }
 
-char	*ft_substr(const char *s, unsigned int start, size_t len)
+char	*ft_substr_gnl(const char *s, unsigned int start, size_t len)
 {
 	char	*aux;
 	size_t	i;
@@ -66,10 +66,10 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	i = 0;
 	if (!s)
 		return (0);
-	if (ft_strlen(s) <= start)
+	if (ft_strlen_(s) <= start)
 		return (0);
-	if (ft_strlen(&s[start]) < len)
-		len = ft_strlen(&s[start]);
+	if (ft_strlen_(&s[start]) < len)
+		len = ft_strlen_(&s[start]);
 	aux = (char *)malloc(len + 1 * sizeof(char));
 	if (!aux)
 		return (0);
@@ -79,7 +79,7 @@ char	*ft_substr(const char *s, unsigned int start, size_t len)
 	return (aux);
 }
 
-char	*ft_strjoin(char const *s1, char const *s2)
+char	*ft_strjoin_(char const *s1, char const *s2)
 {
 	int		i;
 	int		j;
@@ -87,7 +87,7 @@ char	*ft_strjoin(char const *s1, char const *s2)
 
 	i = 0;
 	j = 0;
-	str = (char *)malloc(sizeof(char) * (ft_strlen(s1) + ft_strlen(s2) + 1));
+	str = (char *)malloc(sizeof(char) * (ft_strlen_(s1) + ft_strlen_(s2) + 1));
 	if (str == NULL)
 		return (NULL);
 	while (s1[i] != '\0')

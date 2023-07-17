@@ -1,32 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   error.c                                            :+:      :+:    :+:   */
+/*   ft_strrncmp.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2023/06/27 13:58:29 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/07/13 15:54:29 by vruiz-go         ###   ########.fr       */
+/*   Created: 2023/07/11 16:43:49 by vruiz-go          #+#    #+#             */
+/*   Updated: 2023/07/16 16:35:19 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "so_long.h"
+#include "libft.h"
 
-int	msg(char *err)
+int	ft_strrncmp(const char *s1, const char *s2, size_t n)
 {
-	write(2, err, ft_strlen(err));
-	return (1);
-}
+	unsigned int	i;
+	unsigned int	j;
 
-void	msg_error(char *err)
-{
-	perror(err);
-	exit (EXIT_FAILURE);
-	return ;
-}
-
-int	red_cross(t_game *game)
-{
-	mlx_destroy_window(game->mlx, game->win);
-	exit (0);
+	if (!s1 || !s2)
+		return (0);
+	i = ft_strlen(s1) - 1;
+	j = ft_strlen(s2) - 1;
+	while (--n && i && j && s1[i] == s2[j])
+	{
+		i--;
+		j--;
+	}
+	return ((unsigned char)s1[i] - (unsigned char)s2[j]);
 }

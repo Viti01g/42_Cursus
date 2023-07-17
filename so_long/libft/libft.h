@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/01/11 15:56:35 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/05/31 16:50:06 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/07/16 16:17:37 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,7 @@
 
 # include<unistd.h>
 # include<stdlib.h>
+# include "get_next_line.h"
 
 int		ft_isalpha(int i);
 int		ft_isdigit(int c);
@@ -57,6 +58,8 @@ void	ft_putendl_fd(char *s, int fd);
 void	ft_putnbr_fd(int n, int fd);
 char	*get_next_line(int fd);
 int		ft_printf(char const *str, ...);
+int		ft_countchar(char *s, char c);
+char	*ft_strenlarge(char *s1, char *s2);
 
 typedef struct s_list
 {

@@ -6,7 +6,7 @@
 #    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 16:04:15 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/07/05 15:44:22 by vruiz-go         ###   ########.fr        #
+#    Updated: 2023/07/11 15:43:13 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -20,7 +20,7 @@ CFLAGS = -Wall -Werror -Wextra
 
 SRCS = so_long.c \
 			error.c \
-			#leer_mapa.c
+			leer_mapa.c
 
 OBJS = $(SRCS:.c=.o)
 

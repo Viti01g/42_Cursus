@@ -6,7 +6,7 @@
 #    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/01/13 12:36:00 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/05/31 15:41:12 by vruiz-go         ###   ########.fr        #
+#    Updated: 2023/07/16 16:22:03 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -60,10 +60,16 @@ MY_SOURCES = ft_isalpha.c \
 						ft_lstiter_bonus.c \
 						ft_lstmap_bonus.c \
 						get_next_line.c \
+						get_next_line_utils.c \
 						get_next_line_bonus.c \
+						get_next_line_utils_bonus.c \
 						ft_printf.c \
 						printf_nums.c \
-						printf_str.c
+						printf_str.c \
+						ft_countchar.c \
+						ft_strenlarge.c \
+						ft_strrncmp.c
+						
 MY_OBJECTS = $(MY_SOURCES:.c=.o)
 CC = gcc
 CFLAGS = -Wall -Wextra -Werror

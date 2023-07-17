@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/02/22 13:22:54 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/03/04 14:21:22 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/07/16 16:35:00 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,10 +25,10 @@
 # endif
 
 char	*get_next_line(int fd);
-char	*ft_strchr(const char *str, int c);
-size_t	ft_strlen(const char *str);
-char	*ft_substr(char const *s, unsigned int start, size_t len);
-char	*ft_strdup(const char *s);
-char	*ft_strjoin(char const *s1, char const *s2);
+char	*ft_strchr_gnl(const char *str, int c);
+size_t	ft_strlen_(const char *str);
+char	*ft_substr_gnl(char const *s, unsigned int start, size_t len);
+char	*ft_strdup_gnl(const char *s);
+char	*ft_strjoin_gnl(char const *s1, char const *s2);
 
 #endif
