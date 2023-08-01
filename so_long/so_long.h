@@ -6,7 +6,7 @@
 /*   By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2023/06/19 17:03:58 by vruiz-go          #+#    #+#             */
-/*   Updated: 2023/07/13 15:54:47 by vruiz-go         ###   ########.fr       */
+/*   Updated: 2023/08/01 18:41:33 by vruiz-go         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,22 @@
 # include <mlx.h>
 //# include <./minilibx/mlx.h>
 
+# define A 0
+# define S 1
+# define D 2
+# define W 13
+# define ESC 53
+# define LEFT 123
+# define RIGHT 124
+# define DOWN 125
+# define UP 126
+
+# define PLY "./textures/personaje/plyr_normal.xpm"
+# define WLL "./textures/wall.xpm"
+# define OBJ "./textures/colleccionable.xpm"
+# define EX "./textures/exit.xpm"
+# define FLR "./textures/floor.xpm"
+
 # define DESTROY 17
 # define ERR_INPUT "Invalid number of arguments.\n"
 # define ERR_FILE "File"
@@ -39,29 +55,38 @@ typedef struct s_obj
 	int		n_plyr;
 }   t_obj;
 
-typedef struct images
+typedef struct disp
 {
-	void	*img;
-	int		wid;
-	int		hei;
-	int		x;
-	int		y;
-}	t_image;
+	void	*ex;
+	void	*ply;
+	void	*colec;
+	void	*flr;
+	void	*wll;
+}	t_disp;
 
 typedef struct s_game
 {
 	void	*mlx;	
 	void	*win;
 	void	*img_wll;
+	int		x_max;
+	int		y_max;
+	int		player_x;
+	int		player_y;
+	char	**map;
+	int		moves;
 }	t_game;
 
 
 int		msg(char *err);
 void	msg_error(char *err);
-char	**check_params(int argc, char **argv, t_obj *obj);
+void	check_params(int argc, char **argv, t_obj *obj, t_game *game);
 int		red_cross(t_game *game);
-char	**check_map(int fd, t_obj *objs);
+void	check_map(int fd, t_obj *objs, t_game *game);
 void	read_map(int fd, t_obj **obj, char **str);
-int	ft_strrncmp(const char *s1, const char *s2, size_t n);
+int		ft_strrncmp(const char *s1, const char *s2, size_t n);
+void	check_rect_map(t_game **game);
+void	init_img(t_game *game, t_disp *disp);
+void	print_map(t_game *game, t_disp *disp);
 
 #endif

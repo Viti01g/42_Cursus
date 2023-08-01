@@ -6,7 +6,7 @@
 #    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2023/06/19 16:04:15 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/07/11 15:43:13 by vruiz-go         ###   ########.fr        #
+#    Updated: 2023/07/31 12:11:24 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -16,11 +16,12 @@ LIBFT_PATH = ./libft/libft.a
 CC = gcc
 MLX = ./mlx/libmlx.a
 MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = -Wall -Werror -Wextra #-g3 -fsanitize=address
 
 SRCS = so_long.c \
 			error.c \
-			leer_mapa.c
+			leer_mapa.c \
+			mas_cosas.c
 
 OBJS = $(SRCS:.c=.o)
 
