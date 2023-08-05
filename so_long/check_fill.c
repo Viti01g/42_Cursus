@@ -70,7 +70,6 @@ static int	check_collect(t_game *game)
 		{
 			if (game->map_cpy[i][j] == 'C')
 				msg_error("Unable to reach all collectibles");
-			printf("aqui\n");
 			j++;
 		}
 		i++;
