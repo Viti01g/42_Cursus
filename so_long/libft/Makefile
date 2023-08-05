@@ -5,80 +5,51 @@
 #                                                     +:+ +:+         +:+      #
 #    By: vruiz-go <vruiz-go@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2023/01/13 12:36:00 by vruiz-go          #+#    #+#              #
-#    Updated: 2023/07/16 16:22:03 by vruiz-go         ###   ########.fr        #
+#    Created: 2023/06/19 16:04:15 by vruiz-go          #+#    #+#              #
+#    Updated: 2023/08/05 17:22:40 by vruiz-go         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
-NAME = libft.a
-MY_SOURCES = ft_isalpha.c \
-			 			ft_isdigit.c  \
-						ft_isalnum.c \
-						ft_isascii.c \
-						ft_isprint.c \
-						ft_strlen.c \
-						ft_toupper.c \
-						ft_tolower.c \
-						ft_strchr.c \
-						ft_strrchr.c \
-						ft_strncmp.c \
-						ft_memset.c \
-						ft_bzero.c \
-						ft_memchr.c \
-						ft_memcpy.c \
-						ft_memcmp.c \
-						ft_memmove.c \
-						ft_strstr.c \
-						ft_strnstr.c \
-						ft_strlcpy.c \
-						ft_strlcat.c \
-						ft_atoi.c \
-						ft_calloc.c \
-						ft_strdup.c \
-						ft_substr.c \
-						ft_strjoin.c \
-						ft_strtrim.c \
-						ft_split.c \
-						ft_itoa.c \
-						ft_strmapi.c \
-						ft_striteri.c \
-						ft_putchar.c \
-						ft_putstr.c \
-						ft_putendl.c \
-						ft_putnbr.c \
-						ft_putchar_fd.c \
-						ft_putstr_fd.c \
-						ft_putendl_fd.c \
-						ft_putnbr_fd.c \
-						ft_lstnew_bonus.c \
-						ft_lstadd_front_bonus.c \
-						ft_lstsize_bonus.c \
-						ft_lstlast_bonus.c \
-						ft_lstadd_back_bonus.c \
-						ft_lstdelone_bonus.c \
-						ft_lstclear_bonus.c \
-						ft_lstiter_bonus.c \
-						ft_lstmap_bonus.c \
-						get_next_line.c \
-						get_next_line_utils.c \
-						get_next_line_bonus.c \
-						get_next_line_utils_bonus.c \
-						ft_printf.c \
-						printf_nums.c \
-						printf_str.c \
-						ft_countchar.c \
-						ft_strenlarge.c \
-						ft_strrncmp.c
-						
-MY_OBJECTS = $(MY_SOURCES:.c=.o)
+NAME = so_long
+
+LIBFT_PATH = ./libft/libft.a
 CC = gcc
-CFLAGS = -Wall -Wextra -Werror
-$(NAME): $(MY_OBJECTS)
-			@ar r $(NAME) $(MY_OBJECTS)
-all:	$(NAME)
+MLX = ./mlx/libmlx.a
+MLX_FLAGS = -lmlx -framework OpenGL -framework AppKit
+CFLAGS = -Wall -Werror -Wextra
+
+SRCS = so_long.c \
+			error.c \
+			read_map.c \
+			more_things.c \
+			keys.c \
+			more_keys.c \
+			check_fill.c
+
+OBJS = $(SRCS:.c=.o)
+
+RM = rm -f
+
+all: make_lib $(NAME)
+
+make_lib:
+	@make -sC ./libft
+	
+$(NAME): $(OBJS)
+	@$(CC) $(CFLAGS) $(OBJS) $(MLX_FLAGS) $(LIBFT_PATH) -o $(NAME)
+	@echo $(NAME)": ready to be executed"
+
+%.o : %.c
+	$(CC) $(CFLAGS) -Imlx -c $< -o $@
+
 clean:
-		@rm -f $(MY_OBJECTS)
+	@$(RM) $(OBJS)
+	@$(MAKE) -C ./libft clean --silent
+
 fclean: clean
-		@rm -f $(NAME)
-re:	fclean all
+	@$(RM) $(NAME)
+	@$(MAKE) -C ./libft fclean --silent
+
+re: fclean all
+
 .PHONY: all clean fclean re
